@@ -139,6 +139,44 @@ public class VirtualMachine
     }
 
     /// <summary>
+    /// Increments this instance.
+    /// </summary>
+    bool Increment()
+    {
+        try
+        {
+            int variable = MemoryStack.Pop();
+            MemoryStack.Push(variable + 1);
+        }
+        catch
+        {
+            return false;
+        }
+
+        PrintResult(CommandCode.INC);
+        return true;
+    }
+
+    /// <summary>
+    /// Decrements this instance.
+    /// </summary>
+    bool Decrement()
+    {
+        try
+        {
+            int variable = MemoryStack.Pop();
+            MemoryStack.Push(variable - 1);
+        }
+        catch
+        {
+            return false;
+        }
+
+        PrintResult(CommandCode.DECR);
+        return true;
+    }
+
+    /// <summary>
     /// Adds the specified variable name.
     /// </summary>
     /// <param name="varName">Name of the variable.</param>
@@ -175,46 +213,8 @@ public class VirtualMachine
         {
             return false;
         }
-        
+
         PrintResult(CommandCode.SUBSTR);
-        return true;
-    }
-
-    /// <summary>
-    /// Increments this instance.
-    /// </summary>
-    bool Increment()
-    {
-        try
-        {
-            int variable = MemoryStack.Pop();
-            MemoryStack.Push(variable + 1);
-        }
-        catch
-        {
-            return false;
-        }
-
-        PrintResult(CommandCode.INC);
-        return true;
-    }
-
-    /// <summary>
-    /// Decrements this instance.
-    /// </summary>
-    bool Decrement()
-    {
-        try
-        {
-            int variable = MemoryStack.Pop();
-            MemoryStack.Push(variable - 1);
-        }
-        catch
-        {
-            return false;
-        }
-
-        PrintResult(CommandCode.DECR);
         return true;
     }
 

@@ -5,14 +5,15 @@ public class Program
     public static void Main(string[] args)
     {
         string[] commands = {
-            "0 num 5",
-            "1 3",
+            "0 num 9",
+            "1 2",
+            "2",
             "4 6",
             "2",
-            "5 2",
-            "3"
+            "3",
+            "5 7"
         };
-
+        
         VirtualMachine vm = new VirtualMachine();
         vm.ExecuteCommands(commands);
     }

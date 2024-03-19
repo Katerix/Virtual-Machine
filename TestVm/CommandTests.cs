@@ -7,12 +7,12 @@ namespace TestVm
     /// </summary>
     public sealed class CommandTests
     {
-        #region Public Fields
+        #region Public Properties
 
         /// <summary>
         /// The vm
         /// </summary>
-        public VirtualMachine VM = new VirtualMachine();
+        public VirtualMachine VM => new();
 
         #endregion
 
@@ -24,9 +24,9 @@ namespace TestVm
         /// <returns>Test commands.</returns>
         static IEnumerable<string> GetTestData1()
         {
-            yield return "0 num 5";
-            yield return "1 3";
-            yield return "4 6";
+            yield return "0 num 8";
+            yield return "1 4";
+            yield return "4 9";
             yield return "2";
             yield return "5 2";
             yield return "3";
@@ -38,12 +38,11 @@ namespace TestVm
         /// <returns>Test commands.</returns>
         static IEnumerable<string> GetTestData2()
         {
-            yield return "0 num 5";
-            yield return "1 3";
+            yield return "1 2";
+            yield return "2";
             yield return "4 6";
             yield return "2";
-            yield return "5 2";
-            yield return "3";
+            yield return "5 7";
         }
 
         /// <summary>
@@ -55,7 +54,7 @@ namespace TestVm
             yield return "0 num 5";
             yield return "1 3";
             yield return "4 6";
-            yield return "2";
+            yield return "6"; // non-existing command code
             yield return "5 2";
             yield return "3";
         }
@@ -66,8 +65,7 @@ namespace TestVm
         /// <returns>Test commands.</returns>
         static IEnumerable<string> GetTestData4()
         {
-            yield return "1 3";
-            yield return "4 6";
+            yield return "3"; // no value was provided
         }
 
         #endregion
